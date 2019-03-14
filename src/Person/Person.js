@@ -46,12 +46,41 @@
 
 
 // props and state
+// import React from 'react';
+//
+// const person = (props) => {
+//     return (
+//         <div>
+//             <p onClick={props.click}> i'm {props.name} and i am {props.age} years old </p>
+//         </div>
+//     )
+// };
+// export default person;
+
+
+// 2 way binding
+// import React from 'react';
+//
+// const person = (props) => {
+//     return (
+//         <div>
+//             <p onClick={props.click}> name - {props.name}, age - {props.age} </p>
+//             <input type="text" onChange={props.changed} value={props.name}/>
+//         </div>
+//     )
+// };
+// export default person;
+
+
+
+// adding styling with stylesheets
 import React from 'react';
 
 const person = (props) => {
     return (
         <div>
-            <p> i'm {props.name} and i am {props.age} years old </p>
+            <p onClick={props.click}> name - {props.name}, age - {props.age} </p>
+            <input type="text" onChange={props.changed} value={props.name}/>
         </div>
     )
 };

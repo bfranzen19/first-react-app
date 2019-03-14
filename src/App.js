@@ -176,47 +176,157 @@
 // // when using react hooks, the function (2nd part of the array aka setPersonsState), does NOT merge whatever you pass to it with the old state, instead it REPLACES the old state with it. this means that whenever you're updating using hooks, you have to include ALL OLD STATE DATA. to accomplish this in this example, you have to add otherState: personsState.otherState to the setPersonsState object in the switchNameHandler() function. or, instead, you can call useState() again and pass in {otherState: 'some other value'} or just the otherState value 'some other values'
 
 
+// passing method references between components
+// calling switchNameHandler not only when clicking the button, but also when clicking any paragraph element inside the person component.
 
-// stateless vs stateful components
-// stateful = a component that manages state (either through a class-based this.setState() or through a hooks/functional approach using setState()). use stateful as little as often. makes the app easier to maintain. 
-// stateless = no internal state management within the component. good practice to create as much stateless components as possible in the application
+// import React, { Component } from 'react';
+// import './App.css';
+// import Person from './Person/Person';
+// class App extends Component {
+//     state = {
+//         persons: [
+//             { name: 'bt', age: 32 },
+//             { name: 'alby', age: 2 },
+//             { name: 'homer', age: 9 },
+//             { name: 'best buddy', age: 23 }
+//         ]
+//     }
+//
+//     switchNameHandler = (newName) => {
+//         console.log('switched ittttt');
+//         this.setState({
+//             persons: [
+//                 { name: newName, age: 2 },
+//                 { name: 'albus humblewhore', age: 2 },
+//                 { name: 'homer bacon', age: 100 },
+//                 { name: 'amy', age: 123 }
+//             ]
+//         });
+//     }
+//
+//
+//     render() {
+//       return (   // <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button> or use click={this.switchNameHandler.bind(this, 'clicked the paragraph')}/> (preferred)
+//           <div className="App">
+//             <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button>
+//             <Person
+//                 name={this.state.persons[0].name}
+//                 age={this.state.persons[0].age}
+//                 click={this.switchNameHandler.bind(this, 'clicked the paragraph')}/>
+//             <Person
+//                 name={this.state.persons[1].name}
+//                 age={this.state.persons[1].age}/>
+//             <Person
+//                 name={this.state.persons[2].name}
+//                 age={this.state.persons[2].age}/>
+//             <Person
+//                 name={this.state.persons[3].name}
+//                 age={this.state.persons[3].age}/>
+//           </div>
+//       );
+//     }
+// }
+// export default App;
 
-import React, { useState } from 'react';
+
+
+// // two way binding
+// import React, { Component } from 'react';
+// import './App.css';
+// import Person from './Person/Person';
+// class App extends Component {
+//     state = {
+//         persons: [
+//             { name: 'bt', age: 32 },
+//             { name: 'alby', age: 2 },
+//             { name: 'homer', age: 63 },
+//             { name: 'best buddy', age: 23 }
+//         ]
+//     }
+//
+//     switchNameHandler = (newName) => {
+//         console.log('switched ittttt');
+//         this.setState({
+//             persons: [
+//                 { name: newName, age: 2 },
+//                 { name: 'albus humblewhore', age: 2 },
+//                 { name: 'homer bacon', age: 100 },
+//                 { name: 'amy', age: 123 }
+//             ]
+//         });
+//     }
+//
+//     nameChangedHandler = (event) => {
+//         this.setState({
+//             persons: [
+//                 { name: event.target.value, age: 24 }   // event.target.value pulls the input value from the Person component
+//             ]
+//         });
+//     }
+//
+//     render() {
+//       return (   // <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button> or use click={this.switchNameHandler.bind(this, 'clicked the paragraph')}/> (preferred)
+//           <div className="App">
+//             <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button>
+//             <Person
+//                 name={this.state.persons[0].name}
+//                 age={this.state.persons[0].age}
+//                 click={this.switchNameHandler.bind(this, 'clicked the paragraph')}
+//                 changed={this.nameChangedHandler}/>
+//           </div>
+//       );
+//     }
+// }
+// export default App;
+
+
+
+// // adding styling with stylesheets
+
+import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-
-const app = props => {
-    const [personsState, setPersonsState] = useState({
+class App extends Component {
+    state = {
         persons: [
+            { name: 'bt', age: 32 },
             { name: 'alby', age: 2 },
-            { name: 'homer', age: 9 },
+            { name: 'homer', age: 63 },
             { name: 'best buddy', age: 23 }
         ]
-    });
+    }
 
-    const [otherState, setOtherState] = useState({
-        otherState: 'some other value'
-    });
-
-    const switchNameHandler = () => {
+    switchNameHandler = (newName) => {
         console.log('switched ittttt');
-        setPersonsState({
+        this.setState({
             persons: [
+                { name: newName, age: 2 },
                 { name: 'albus humblewhore', age: 2 },
                 { name: 'homer bacon', age: 100 },
                 { name: 'amy', age: 123 }
-            ],
-            otherState: personsState.otherState
+            ]
         });
     }
 
-    return (
-        <div className="App">
-            <button onClick={switchNameHandler}> switch name </button>
-            <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
-            <Person name={personsState.persons[1].name} age={personsState.persons[1].age}/>
-            <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
-            </div>
-    );
+    nameChangedHandler = (event) => {
+        this.setState({
+            persons: [
+                { name: event.target.value, age: 24 }   // event.target.value pulls the input value from the Person component
+            ]
+        });
+    }
+
+    render() {
+      return (   // <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button> or use click={this.switchNameHandler.bind(this, 'clicked the paragraph')}/> (preferred)
+          <div className="App">
+            <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button>
+            <Person
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age}
+                click={this.switchNameHandler.bind(this, 'clicked the paragraph')}
+                changed={this.nameChangedHandler}/>
+          </div>
+      );
+    }
 }
-export default app;
+export default App;
