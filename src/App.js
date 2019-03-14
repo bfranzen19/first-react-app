@@ -283,50 +283,123 @@
 
 // // adding styling with stylesheets
 
-import React, { Component } from 'react';
-import './App.css';
-import Person from './Person/Person';
-class App extends Component {
-    state = {
-        persons: [
-            { name: 'bt', age: 32 },
-            { name: 'alby', age: 2 },
-            { name: 'homer', age: 63 },
-            { name: 'best buddy', age: 23 }
-        ]
-    }
+// import React, { Component } from 'react';
+// import './App.css';
+// import Person from './Person/Person';
+//
+// class App extends Component {
+//     state = {
+//         persons: [
+//             { name: 'bt', age: 32 },
+//             { name: 'alby', age: 2 },
+//             { name: 'homer', age: 63 },
+//             { name: 'best buddy', age: 23 }
+//         ]
+//     }
+//
+//     switchNameHandler = (newName) => {
+//         console.log('switched ittttt');
+//         this.setState({
+//             persons: [
+//                 { name: newName, age: 2 },
+//                 { name: 'albus humblewhore', age: 2 },
+//                 { name: 'homer bacon', age: 100 },
+//                 { name: 'amy', age: 123 }
+//             ]
+//         });
+//     }
+//
+//     nameChangedHandler = (event) => {
+//         this.setState({
+//             persons: [
+//                 { name: event.target.value, age: 24 },
+//                 { name: event.target.value, age: 22 }   // event.target.value pulls the input value from the Person component
+//             ]
+//         });
+//     }
+//
+//     render() {
+//       return (   // <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button> or use click={this.switchNameHandler.bind(this, 'clicked the paragraph')}/> (preferred)
+//           <div className="App">
+//             <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button>
+//             <Person
+//                 name={this.state.persons[0].name}
+//                 age={this.state.persons[0].age}
+//                 click={this.switchNameHandler.bind(this, 'clicked the paragraph')}
+//                 changed={this.nameChangedHandler}/>
+//             <Person
+//                 name={this.state.persons[1].name}
+//                 age={this.state.persons[1].age}
+//                 />
+//           </div>
+//       );
+//     }
+// }
+// export default App;
 
-    switchNameHandler = (newName) => {
-        console.log('switched ittttt');
-        this.setState({
-            persons: [
-                { name: newName, age: 2 },
-                { name: 'albus humblewhore', age: 2 },
-                { name: 'homer bacon', age: 100 },
-                { name: 'amy', age: 123 }
-            ]
-        });
-    }
 
-    nameChangedHandler = (event) => {
-        this.setState({
-            persons: [
-                { name: event.target.value, age: 24 }   // event.target.value pulls the input value from the Person component
-            ]
-        });
-    }
-
-    render() {
-      return (   // <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button> or use click={this.switchNameHandler.bind(this, 'clicked the paragraph')}/> (preferred)
-          <div className="App">
-            <button onClick={() => this.switchNameHandler('clicked the button')}> switch name </button>
-            <Person
-                name={this.state.persons[0].name}
-                age={this.state.persons[0].age}
-                click={this.switchNameHandler.bind(this, 'clicked the paragraph')}
-                changed={this.nameChangedHandler}/>
-          </div>
-      );
-    }
-}
-export default App;
+// // inline styling
+// import React, { Component } from 'react';
+// import './App.css';
+// import Person from './Person/Person';
+//
+// class App extends Component {
+//     state = {
+//         persons: [
+//             { name: 'bt', age: 32 },
+//             { name: 'alby', age: 2 },
+//             { name: 'homer', age: 63 },
+//             { name: 'best buddy', age: 23 }
+//         ]
+//     }
+//
+//     switchNameHandler = (newName) => {
+//         console.log('switched ittttt');
+//         this.setState({
+//             persons: [
+//                 { name: newName, age: 2 },
+//                 { name: 'albus humblewhore', age: 2 },
+//                 { name: 'homer bacon', age: 100 },
+//                 { name: 'amy', age: 123 }
+//             ]
+//         });
+//     }
+//
+//     nameChangedHandler = (event) => {
+//         this.setState({
+//             persons: [
+//                 { name: event.target.value, age: 24 },
+//                 { name: event.target.value, age: 22 }
+//             ]
+//         });
+//     }
+//
+//     render() {  // set inline styles within render(). pass style variable to button style
+//         const style = {
+//             backgroundColor: 'white',
+//             font: 'inherit',
+//             border: '1px solid dodgerBlue',
+//             padding: '8px',
+//             cursor: 'pointer'
+//         };
+//
+//       return (
+//           <div className="App">
+//             <button
+//                 style={style}
+//                 onClick={() => this.switchNameHandler('clicked the button')}> switch name
+//             </button>
+//             <Person
+//                 name={this.state.persons[0].name}
+//                 age={this.state.persons[0].age}
+//                 click={this.switchNameHandler.bind(this, 'clicked the paragraph')}
+//                 changed={this.nameChangedHandler}/>
+//             <Person
+//                 name={this.state.persons[1].name}
+//                 age={this.state.persons[1].age}
+//                 />
+//           </div>
+//       );
+//     }
+// }
+// export default App;
