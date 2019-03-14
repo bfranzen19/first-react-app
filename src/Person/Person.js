@@ -74,15 +74,15 @@
 
 
 // adding styling with stylesheets. add className to connect to Person.css. don't forget to import './Person.css' with the file extension included (only JS files can omit file ext).  style tags are injected by webpack.
-// import React from 'react';
-// import './Person.css';
-//
-// const person = (props) => {
-//     return (
-//         <div className="Person">
-//             <p onClick={props.click}> name - {props.name}, age - {props.age} </p>
-//             <input type="text" onChange={props.changed} value={props.name}/>
-//         </div>
-//     )
-// };
-// export default person;
+import React from 'react';
+import './Person.css';
+
+const person = (props) => {
+    return (
+        <div className="Person">
+            <p onClick={props.click}> name - {props.name}, age - {props.age} </p>
+            <input type="text" onChange={props.changed} value={props.name}/>
+        </div>
+    )
+};
+export default person;

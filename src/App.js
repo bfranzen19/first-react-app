@@ -403,3 +403,87 @@
 //     }
 // }
 // export default App;
+
+
+// // rendering content conditionally
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+    state = {
+        persons: [
+            { name: 'bt', age: 32 },
+            { name: 'alby', age: 2 },
+            { name: 'homer', age: 63 },
+            { name: 'amy', age: 23 }
+        ],
+        otherState: 'some other value',
+        showPersons: false
+    }
+
+    switchNameHandler = (newName) => {
+        console.log('switched ittttt');
+        this.setState({
+            persons: [
+                { name: newName, age: 2 },
+                { name: 'albus humblewhore', age: 2 },
+                { name: 'homer bacon', age: 100 },
+                { name: 'amy', age: 123 }
+            ]
+        });
+    }
+
+    nameChangedHandler = (event) => {
+        this.setState({
+            persons: [
+                { name: event.target.value, age: 24 },
+                { name: event.target.value, age: 22 }
+            ]
+        });
+    }
+
+    togglePersonsHandler = () => {
+        const doesShow = this.state.showPersons;
+        this.setState({
+            showPersons: !doesShow
+        });
+    }
+
+    render() {
+        const style = {
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid dodgerBlue',
+            padding: '8px',
+            cursor: 'pointer'
+        };
+
+      return (
+            <div className="App">
+            <button
+                style={style}
+                onClick={() => this.togglePersonsHandler()}> show/hide
+            </button>
+            {
+            this.state.showPersons  === true ?
+            <div>
+                <Person
+                    name={this.state.persons[0].name}
+                    age={this.state.persons[0].age} />
+                <Person
+                    name={this.state.persons[1].name}
+                    age={this.state.persons[1].age} />
+                <Person
+                    name={this.state.persons[2].name}
+                    age={this.state.persons[2].age} />
+                <Person
+                    name={this.state.persons[3].name}
+                    age={this.state.persons[3].age} />
+            </div> : null
+            }
+          </div>
+      );
+    }
+}
+export default App;
