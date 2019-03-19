@@ -1154,6 +1154,17 @@ class App extends Component {
 
     let persons = null;
 
+    // let classes = ['red', 'bold'].join(' ');    // returns "red bold" as default
+    // dynamic classes
+    const classes = [];
+    if(this.state.persons.length <= 2) {
+        classes.push('red');    // classes = ['red']
+    }
+    if(this.state.persons.length <= 1) {    // not an else because both need to run
+        classes.push('bold');   // classes = ['red', 'bold']
+    }
+
+
     if(this.state.showPersons) {
         persons = (
             <div>
@@ -1173,6 +1184,7 @@ class App extends Component {
 
         return (
             <div className="App">
+                <p className={classes.join(' ')}>this will change</p>
                 <button
                     style={style}
                     onClick={this.togglePersonsHandler}> show/hide
