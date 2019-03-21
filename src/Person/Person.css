@@ -10,3 +10,10 @@
 button {
     margin-top: 24px;
 }
+
+/* can do media queries this way too */
+/* @media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+} */

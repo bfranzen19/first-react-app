@@ -74,15 +74,46 @@
 
 
 // adding styling with stylesheets. add className to connect to Person.css. don't forget to import './Person.css' with the file extension included (only JS files can omit file ext).  style tags are injected by webpack.
+// import React from 'react';
+// import './Person.css';
+// import Radium from 'radium';
+//
+// const person = (props) => {
+//     const style = {
+//         '@media (min-width: 500px)': {
+//             width: '450px'
+//         }
+//     };
+//
+//     return (
+//         <div className="Person" style={style}>
+//             <p onClick={props.click}> name - {props.name}, age - {props.age} </p>
+//             <input type="text" onChange={props.changed} value={props.name}/>
+//         </div>
+//     )
+// };
+// export default Radium(person);
+
+
+
+
+// //
 import React from 'react';
 import './Person.css';
+import Radium from 'radium';
 
 const person = (props) => {
+    const style = {
+        '@media (min-width: 500px)': {
+            width: '450px'
+        }
+    };
+
     return (
-        <div className="Person">
+        <div className="Person" style={style}>
             <p onClick={props.click}> name - {props.name}, age - {props.age} </p>
             <input type="text" onChange={props.changed} value={props.name}/>
         </div>
     )
 };
-export default person;
+export default Radium(person);
