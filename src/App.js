@@ -1206,11 +1206,10 @@
 
 
 
-// // 
+// //
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
     state = {
@@ -1264,10 +1263,6 @@ class App extends Component {
             border: '1px solid dodgerBlue',
             padding: '8px',
             cursor: 'pointer',
-            ':hover': { // setting the hover properites for the green button
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
         };
 
     let persons = null;
@@ -1292,25 +1287,19 @@ class App extends Component {
         );
 
         style.backgroundColor = 'red';
-        style[':hover'] = { // assigning hover properties for the red button
-            backgroundColor: 'salmon',
-            color: 'black'
-        }
 
     }
 
         return (
-            <StyleRoot>
-                <div className="App">
-                    <p className={classes.join(' ')}>this will change</p>
-                    <button
-                        style={style}
-                        onClick={this.togglePersonsHandler}> show/hide
-                    </button>
-                    {persons}
-                </div>
-            </StyleRoot>
+            <div className="App">
+                <p className={classes.join(' ')}>this will change</p>
+                <button
+                    style={style}
+                    onClick={this.togglePersonsHandler}> show/hide
+                </button>
+                {persons}
+            </div>
         );
     }
 }
-export default Radium(App);
+export default App;
